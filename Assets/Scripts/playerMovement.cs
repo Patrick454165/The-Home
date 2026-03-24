@@ -9,6 +9,9 @@ public class playerMovement : MonoBehaviour
     Vector2 getMovement;
     public bool canMove;
     public float moveModifier;
+    public float checkThisFarForConsole;
+    public GameObject cam;
+    public Camera camAsset;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
 
@@ -19,6 +22,21 @@ public class playerMovement : MonoBehaviour
             getMovement = value.Get<Vector2>();
         }
         
+    }
+
+    public void OnAttack(InputValue value)
+    {
+        Debug.DrawRay(cam.transform.position, cam.transform.TransformDirection(Vector3.forward)*checkThisFarForConsole, Color.red, 10f);
+        RaycastHit hit;
+        if (Physics.Raycast(cam.transform.position, cam.transform.TransformDirection(Vector3.forward), out hit, checkThisFarForConsole))
+        {
+            if (hit.collider.gameObject.CompareTag("Console"))
+            {
+                Camera conCam = hit.collider.gameObject.GetComponentInChildren<Camera>();
+                camAsset.targetDisplay=1;
+                conCam.targetDisplay=0;
+            }
+        }
     }
 
     // Update is called once per frame

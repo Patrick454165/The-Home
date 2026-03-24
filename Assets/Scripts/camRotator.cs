@@ -1,23 +1,38 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class camRotator : MonoBehaviour
 {
     public float mouseSensitivity;
     Vector2 mouse;
+    Rect ScreenRect;
+    float xRotation;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        mouse = Mouse.current.position.ReadValue();
+        
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void OnLook(InputValue value)
+    {
+        float mouseX = value.Get<Vector2>().x * mouseSensitivity * Time.deltaTime;
+        float mouseY = value.Get<Vector2>().y * mouseSensitivity * Time.deltaTime;
+        xRotation += mouseX;
+        transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 mousePrev = mouse;
-        mouse = Mouse.current.position.ReadValue();
         
-        transform.eulerAngles = new(0, (mouse.x)*mouseSensitivity, 0);
+        
+        ScreenRect.x = 0;
+        ScreenRect.y = 0;
+        ScreenRect.width = Screen.width;
+        ScreenRect.height = Screen.height;
+        
         
     }
 }

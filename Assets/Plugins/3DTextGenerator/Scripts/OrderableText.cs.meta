@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: 0deb43ca09d869d45a933f470fedec4c
+AssetOrigin:
+  serializedVersion: 1
+  productId: 231291
+  packageName: 3D Text Generator
+  packageVersion: 1.0
+  assetPath: Assets/Plugins/3DTextGenerator/Scripts/OrderableText.cs
+  uploadId: 526637
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mat: {fileID: -264030362843546227, guid: 14d2aee51ed41ad4fb466baeb037c9c7, type: 3}
+  - spawnSpherePivot: {instanceID: 0}
+  - CharacterBoundsVisualizerPrefab: {instanceID: 0}
+  - SpaceBoundsVisualizerPrefab: {instanceID: 0}
+  - space: {instanceID: 0}
+  - exclam: {instanceID: 0}
+  - quotedbl: {instanceID: 0}
+  - numbersign: {instanceID: 0}
+  - dollar: {instanceID: 0}
+  - percent: {instanceID: 0}
+  - ampersand: {instanceID: 0}
+  - quotesingle: {instanceID: 0}
+  - parentleft: {instanceID: 0}
+  - parentright: {instanceID: 0}
+  - asterisk: {instanceID: 0}
+  - plus: {instanceID: 0}
+  - comma: {instanceID: 0}
+  - hyphen: {instanceID: 0}
+  - period: {instanceID: 0}
+  - slash: {instanceID: 0}
+  - zero: {instanceID: 0}
+  - one: {instanceID: 0}
+  - two: {instanceID: 0}
+  - three: {instanceID: 0}
+  - four: {instanceID: 0}
+  - five: {instanceID: 0}
+  - six: {instanceID: 0}
+  - seven: {instanceID: 0}
+  - eight: {instanceID: 0}
+  - nine: {instanceID: 0}
+  - colon: {instanceID: 0}
+  - semicolon: {instanceID: 0}
+  - less: {instanceID: 0}
+  - equal: {instanceID: 0}
+  - greater: {instanceID: 0}
+  - question: {instanceID: 0}
+  - at: {instanceID: 0}
+  - upper_A: {instanceID: 0}
+  - upper_B: {instanceID: 0}
+  - upper_C: {instanceID: 0}
+  - upper_D: {instanceID: 0}
+  - upper_E: {instanceID: 0}
+  - upper_F: {instanceID: 0}
+  - upper_G: {instanceID: 0}
+  - upper_H: {instanceID: 0}
+  - upper_I: {instanceID: 0}
+  - upper_J: {instanceID: 0}
+  - upper_K: {instanceID: 0}
+  - upper_L: {instanceID: 0}
+  - upper_M: {instanceID: 0}
+  - upper_N: {instanceID: 0}
+  - upper_O: {instanceID: 0}
+  - upper_P: {instanceID: 0}
+  - upper_Q: {instanceID: 0}
+  - upper_R: {instanceID: 0}
+  - upper_S: {instanceID: 0}
+  - upper_T: {instanceID: 0}
+  - upper_U: {instanceID: 0}
+  - upper_V: {instanceID: 0}
+  - upper_W: {instanceID: 0}
+  - upper_X: {instanceID: 0}
+  - upper_Y: {instanceID: 0}
+  - upper_Z: {instanceID: 0}
+  - bracketleft: {instanceID: 0}
+  - backslash: {instanceID: 0}
+  - bracketright: {instanceID: 0}
+  - circumflex: {instanceID: 0}
+  - underscore: {instanceID: 0}
+  - grave: {instanceID: 0}
+  - lower_A: {instanceID: 0}
+  - lower_B: {instanceID: 0}
+  - lower_C: {instanceID: 0}
+  - lower_D: {instanceID: 0}
+  - lower_E: {instanceID: 0}
+  - lower_F: {instanceID: 0}
+  - lower_G: {instanceID: 0}
+  - lower_H: {instanceID: 0}
+  - lower_I: {instanceID: 0}
+  - lower_J: {instanceID: 0}
+  - lower_K: {instanceID: 0}
+  - lower_L: {instanceID: 0}
+  - lower_M: {instanceID: 0}
+  - lower_N: {instanceID: 0}
+  - lower_O: {instanceID: 0}
+  - lower_P: {instanceID: 0}
+  - lower_Q: {instanceID: 0}
+  - lower_R: {instanceID: 0}
+  - lower_S: {instanceID: 0}
+  - lower_T: {instanceID: 0}
+  - lower_U: {instanceID: 0}
+  - lower_V: {instanceID: 0}
+  - lower_W: {instanceID: 0}
+  - lower_X: {instanceID: 0}
+  - lower_Y: {instanceID: 0}
+  - lower_Z: {instanceID: 0}
+  - braceleft: {instanceID: 0}
+  - bar: {instanceID: 0}
+  - braceright: {instanceID: 0}
+  - tilde: {instanceID: 0}
+  - upper_Ntilde: {instanceID: 0}
+  - lower_Ntilde: {instanceID: 0}
+  - upper_Ccedilla: {instanceID: 0}
+  - lower_Ccedilla: {instanceID: 0}
+  - acute: {instanceID: 0}
+  - upper_Aacute: {instanceID: 0}
+  - upper_Eacute: {instanceID: 0}
+  - upper_Iacute: {instanceID: 0}
+  - upper_Oacute: {instanceID: 0}
+  - upper_Uacute: {instanceID: 0}
+  - upper_Agrave: {instanceID: 0}
+  - upper_Egrave: {instanceID: 0}
+  - upper_Igrave: {instanceID: 0}
+  - upper_Ograve: {instanceID: 0}
+  - upper_Ugrave: {instanceID: 0}
+  - upper_Acircum: {instanceID: 0}
+  - upper_Ecircum: {instanceID: 0}
+  - upper_Icircum: {instanceID: 0}
+  - upper_Ocircum: {instanceID: 0}
+  - upper_Ucircum: {instanceID: 0}
+  - upper_Adiaere: {instanceID: 0}
+  - upper_Ediaere: {instanceID: 0}
+  - upper_Idiaere: {instanceID: 0}
+  - upper_Odiaere: {instanceID: 0}
+  - upper_Udiaere: {instanceID: 0}
+  - lower_Aacute: {instanceID: 0}
+  - lower_Eacute: {instanceID: 0}
+  - lower_Iacute: {instanceID: 0}
+  - lower_Oacute: {instanceID: 0}
+  - lower_Uacute: {instanceID: 0}
+  - lower_Agrave: {instanceID: 0}
+  - lower_Egrave: {instanceID: 0}
+  - lower_Igrave: {instanceID: 0}
+  - lower_Ograve: {instanceID: 0}
+  - lower_Ugrave: {instanceID: 0}
+  - lower_Acircum: {instanceID: 0}
+  - lower_Ecircum: {instanceID: 0}
+  - lower_Icircum: {instanceID: 0}
+  - lower_Ocircum: {instanceID: 0}
+  - lower_Ucircum: {instanceID: 0}
+  - lower_Adiaere: {instanceID: 0}
+  - lower_Ediaere: {instanceID: 0}
+  - lower_Idiaere: {instanceID: 0}
+  - lower_Odiaere: {instanceID: 0}
+  - lower_Udiaere: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

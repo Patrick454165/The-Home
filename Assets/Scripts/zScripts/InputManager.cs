@@ -33,20 +33,11 @@ public class InputManager : MonoBehaviour
     private string story; // holds the story to display
     private List<string> commands = new List<string>();
 
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(gameObject);
-
-        DontDestroyOnLoad(gameObject);
-    }
-
+    
     void Start()
     {
         
-        commands.Add("save");
+        //add all commands
         commands.Add("commands");
         commands.Add("open");
         commands.Add("log");
@@ -72,7 +63,7 @@ public class InputManager : MonoBehaviour
     void GetInput(string input)
     {
         
-        userInput.text = "";
+        userInput.text = "";  
         userInput.ActivateInputField();
 
         if(input != "")
@@ -85,8 +76,8 @@ public class InputManager : MonoBehaviour
             
                 if (commands.Contains(parts[0]))
                 {
-                    UpdateStory(input);
-                    if(parts[0] == "open" && parts[1] == "door")
+                    UpdateStory(">" + input);
+                    if(parts[0] == "open" && parts[1] == "door") 
                     {
                         if (doorPermission)
                         {
@@ -103,13 +94,14 @@ public class InputManager : MonoBehaviour
                         UpdateStory("Correct! Door access has been granted.");
                     }
                     
-                    else if(parts[0] == "message")
+                    else if(parts[0] == "message") //Exists so player can't do what Niel does
                     {
                         UpdateStory("You do not have the necessary permissions to access this. Please try again later.");
                     }
-                    else if(parts[0] == "access")
+                    else if(parts[0] == "access") //Get question
                     {
-                        UpdateStory(accessQuestion);
+                        
+                        UpdateStory("Opening Access Question: " + accessQuestion);
                     }
                     else
                     {
@@ -118,16 +110,18 @@ public class InputManager : MonoBehaviour
                 }
                 else //command not valid
                 {
+                    UpdateStory(">" + input);
                     UpdateStory("Invalid Command, try using 'commands' to see your options");
                 }
             }//two
             else if(parts.Length > 0)
             {
-                if(parts[0] == "log" || parts[0] == "logs")
+                UpdateStory(">" + input);
+                if(parts[0] == "log" || parts[0] == "logs") //get clues for puzzle
                 {
                     UpdateStory(consoleLogs);
                 }
-                else if(parts[0] == "commands")
+                else if(parts[0] == "commands") //get all allowed actions
                 {
                     UpdateStory(commandDescription);
                 }
@@ -135,7 +129,7 @@ public class InputManager : MonoBehaviour
                 {
                     UpdateStory("Invalid Command, try using 'commands' to see your options");
                 }
-                commands.Add("save");
+                
         
         
         
@@ -143,20 +137,22 @@ public class InputManager : MonoBehaviour
             }
             else //command not valid
             {
+                UpdateStory(">" + input);
                 UpdateStory("Invalid Command, try using 'commands' to see your options");
             }
         }
         else //command not valid
         {
+            UpdateStory(">" + input);
             UpdateStory("Invalid Command, try using 'commands' to see your options");
         }
     }
 
-    public void UpdateStory(string msg)
+    public void UpdateStory(string msg) 
     {
         story += "\n" + msg;
         storyText.text = story;
-        consoleLogs+= "\n" + msg + "\n" + "By new_user";
+        consoleLogs+= "\nApril 19th:\n" + msg + "\n" + "By new_user"; //Adds your messages to console
         StartCoroutine("ScrollToBottom");
     }
 }

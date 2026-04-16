@@ -17,16 +17,16 @@ public class camRotator : MonoBehaviour
 
     void OnLook(InputValue value)
     {
-        float mouseX = value.Get<Vector2>().x * mouseSensitivity * Time.deltaTime;
+        float mouseX = value.Get<Vector2>().x * mouseSensitivity * Time.deltaTime; 
         float mouseY = value.Get<Vector2>().y * mouseSensitivity * Time.deltaTime;
         xRotation += mouseX;
-        transform.localRotation = Quaternion.Euler(0f, xRotation, 0f);
+        transform.localRotation = Quaternion.Euler(0f, xRotation, 0f); //Adjusts view to reflect mouse movement
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Affixes view
         
         ScreenRect.x = 0;
         ScreenRect.y = 0;

@@ -1,9 +1,12 @@
+//Name: Rose Machmer
+//Date: 4/22/2026
+//Purpose: Allow the player to move, open consoles, and open doors.
+
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class playerMovement : MonoBehaviour
@@ -22,6 +25,9 @@ public class playerMovement : MonoBehaviour
     public GameObject conCanvas;
     public TextMeshProUGUI Prompt;
     public float fadeDuration;
+    
+    public Image PromptBackground;
+    
     bool seenEscTutorial=false;
     bool seenConTutorial=false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,37 +35,40 @@ public class playerMovement : MonoBehaviour
     public void Awake()
     {
         activatePrompt("Use WASD to move.");
+        
     }
-    public void activatePrompt(string text)
+    public void activatePrompt(string text) //Adds tutorial information to explain the controls
     {
         Prompt.text=text;
         Prompt.color = new Color(0, 0, 0, 0);
-        StartCoroutine("FadeInText");
+        StopCoroutine("FadeInText"); //Makes sure the fades don't overlap
+        StopCoroutine("FadeOutText");
+        StartCoroutine("FadeInText"); 
     }
-    public void activatePrompt(string text, Color color)
+    public void activatePrompt(string text, Color color) //Same as previous but lets you set the text color
     {
         Prompt.color=color;
         Prompt.text=text;
         Prompt.color = new Color(Prompt.color.r, Prompt.color.g, Prompt.color.b, 0);
-        StopCoroutine("FadeInText");
+        StopCoroutine("FadeInText"); //Makes sure the fades don't overlap
         StopCoroutine("FadeOutText");
         StartCoroutine("FadeInText");
     }
-    public void OnMove(InputValue value)
+    public void OnMove(InputValue value) //Applies momentum
     {
-        if (canMove)
+        if (canMove) //Makes sure you can move
         {
             getMovement = value.Get<Vector2>(); //gets movement values
             if (!seenConTutorial)
             {
-                activatePrompt("Use left mouse on console to zoom in.");
+                activatePrompt("Click on the computer with the left mouse\nbutton to turn it on.");
                 seenConTutorial=true;
             }
         }
         
     }
 
-    IEnumerator FadeInText()
+    IEnumerator FadeInText() //Make text slowly appear
     {
         float elapsed = 0f;
         
@@ -71,12 +80,13 @@ public class playerMovement : MonoBehaviour
             // Linearly interpolate alpha from 0 to 1
             float alpha = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
             Prompt.color = new Color(color.r, color.g, color.b, alpha);
+            PromptBackground.color = new Color(color.r, color.g, color.b, alpha/2);
             yield return null; // Wait for the next frame
         }
-        
-        yield return StartCoroutine(FadeOutText());
+        yield return new WaitForSeconds(2);
+        yield return StartCoroutine(FadeOutText()); //Have the text vanish now that they've probably read it
     }
-    IEnumerator FadeOutText()
+    IEnumerator FadeOutText() //Make text slowly vanish
     {
 
         float elapsed = fadeDuration;
@@ -91,6 +101,7 @@ public class playerMovement : MonoBehaviour
             // Linearly interpolate alpha from 0 to 1
             float alpha = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
             Prompt.color = new Color(color.r, color.g, color.b, alpha);
+            PromptBackground.color = new Color(color.r, color.g, color.b, alpha/2);
             yield return null; // Wait for the next frame
         }
     }
@@ -107,7 +118,7 @@ public class playerMovement : MonoBehaviour
                     consoleScript con = hit.collider.gameObject.GetComponent<consoleScript>();
                     conCam = con.cameraAsset; //grab canvas and camera for this console
                     conCanvas=con.canvas; //
-                    con.audioSource.Play();
+                    con.audioSource.Play(); //Play console hiss
                     conConsole = hit.collider.gameObject;
                     camAsset.targetDisplay=1;camAsset.enabled=false; //Changes display so you are looking through console camera
                     conCam.targetDisplay=0;conCam.enabled=true; //
@@ -116,13 +127,13 @@ public class playerMovement : MonoBehaviour
                     conCanvas.SetActive(true);
                     if (!seenEscTutorial)
                     {
-                        activatePrompt("Press ESC to back out. Click on input bar to type.");
+                        activatePrompt("Click on input bar to type. Press ESC to back out");
                         seenEscTutorial=true;
                     }
                 }
-                if (hit.collider.gameObject.CompareTag("Door"))
+                if (hit.collider.gameObject.CompareTag("Door")) //Open door and end Demo
                 {
-                    if (hit.collider.gameObject.GetComponent<doorDemoScript>().console.GetComponent<InputManager>().doorPermission)
+                    if (hit.collider.gameObject.GetComponent<doorDemoScript>().console.GetComponent<InputManager>().doorOpened)
                     {
                         canMove=false;
                         EventManager.TriggerEvent("activateEnding");

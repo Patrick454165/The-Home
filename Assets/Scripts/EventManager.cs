@@ -1,7 +1,11 @@
+//Name: Rose Machmer
+//Date: 4/22/2026
+//Purpose: Handle events
+
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 //This is going to replace notification manager class
 //Be sure to attach this to our GameManager class!
@@ -30,6 +34,7 @@ public class EventManager : MonoBehaviour
                 else
                 {
                     eventManager.Init();
+                    
                 }
             }
 
@@ -39,6 +44,7 @@ public class EventManager : MonoBehaviour
 
     void Init()
     {
+        DontDestroyOnLoad(this.gameObject);
         if (eventDictionary == null)
         {
             eventDictionary = new Dictionary<string, UnityAction>();

@@ -1,3 +1,7 @@
+//Name: Rose Machmer
+//Date: 4/22/2026
+//Purpose: Let the player turn.
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,7 +19,7 @@ public class camRotator : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void OnLook(InputValue value)
+    void OnLook(InputValue value) //scan camera
     {
         float mouseX = value.Get<Vector2>().x * mouseSensitivity * Time.deltaTime; 
         float mouseY = value.Get<Vector2>().y * mouseSensitivity * Time.deltaTime;
